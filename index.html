@@ -12,13 +12,20 @@
 </head>
 
 <body>
-    <section class="container m-4">
+    <section class="container my-4 mx-auto">
+        <!-- search section -->
         <h2 class="text-center">Search Phone Name </h2>
         <div class="input-group mb-3 w-50 mx-auto">
             <input id="search-field" type="text" class="form-control" placeholder="Enter phone name"
                 aria-label="Recipient's username" aria-describedby="button-addon2">
             <button onclick="searchMobile()" class="btn btn-outline-secondary" type="button"
                 id="button-search">search</button>
+        </div>
+
+        <!-- display section -->
+
+        <div id="display-result" class="row row-cols-1 row-cols-md-3 g-4">
+
         </div>
     </section>
 
