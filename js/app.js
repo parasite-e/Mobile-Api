@@ -19,8 +19,8 @@ const displayResult = phones => {
         const div = document.createElement('div');
         div.classList.add('col');
         div.innerHTML = `
-        <div class="card">
-                    <img src="${phone.image}" class="card-img-top" alt="...">
+        <div class="card">        
+                <img src="${phone.image}" class="card-img-top" alt="...">  
                     <div class="d-flex flex-column align-items-center">
                       <div class="card-body text-center">
                        <h5 class="card-title">${phone.phone_name}</h5>
@@ -28,7 +28,6 @@ const displayResult = phones => {
                       </div>
                       <button onclick="loadPhoneDetails('${phone.slug}')" class="btn btn-primary w-50 mb-2">Details</button>
                     </div>
-                    
                 </div>
         
         `;
@@ -41,5 +40,27 @@ const loadPhoneDetails = phoneId => {
     const url = `https://openapi.programming-hero.com/api/phone/${phoneId}`;
     fetch(url)
         .then(res => res.json())
-        .then(data => console.log(data.data));
+        .then(data => displayPhoneDetails(data.data));
+}
+
+const displayPhoneDetails = phone => {
+    console.log(phone);
+    const displayDetails = document.getElementById('display-details');
+    const div = document.createElement('div');
+    div.classList.add('card');
+    div.innerHTML = `
+    <img src="${phone.image}" class="card-img-top p-3" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+            card's content.</p>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">An item</li>
+        <li class="list-group-item">A second item</li>
+        <li class="list-group-item">A third item</li>
+    </ul>
+    
+    `;
+    displayDetails.appendChild(div);
 }
