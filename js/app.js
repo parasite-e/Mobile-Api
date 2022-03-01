@@ -35,7 +35,7 @@ const displayResult = phones => {
         apiError.style.display = 'block';
     } else {
         apiError.style.display = 'none';
-        phones.forEach(phone => {
+        phones.slice(0, 20).forEach(phone => {
             const div = document.createElement('div');
             div.classList.add('col');
             div.innerHTML = `
