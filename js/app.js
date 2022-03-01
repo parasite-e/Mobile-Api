@@ -74,16 +74,34 @@ const displayPhoneDetails = phone => {
     div.innerHTML = `
     <img src="${phone.image}" class="card-img-top p-3" alt="...">
     <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-            card's content.</p>
-    </div>
+        <h4 class="card-title">${phone.brand}</h4>
+        <h5 class="card-text">${phone.name}</h5>
+        <p><small>${phone?.releaseDate ?? "comming soon"}</small></p >
+    </div >
     <ul class="list-group list-group-flush">
-        <li class="list-group-item">An item</li>
-        <li class="list-group-item">A second item</li>
-        <li class="list-group-item">A third item</li>
+        <li class="list-group-item">
+            <h6>Main Features</h6>
+            <ul>
+                <li><strong>ChipSet: </strong>${phone.mainFeatures.chipSet}</li>
+                <li><strong>Display Size: </strong>${phone.mainFeatures.displaySize}</li>
+                <li><strong>Memory: </strong>${phone.mainFeatures.memory}</li>
+                <li><strong>Storage: </strong>${phone.mainFeatures.storage}</li>
+            </ul>
+        </li>
+        <li class="list-group-item"><strong>Sensors:</strong> ${phone.mainFeatures.sensors}</li>
+        <li class="list-group-item">
+            <h6>Others</h6>
+            ${phone.others ? `<ul>
+                <li><strong>Bluetooth</strong>: ${phone?.others?.Bluetooth ?? "Not Available"}</li>
+                <li><strong>GPS</strong>: ${phone?.others?.GPS ?? "Not Available"}</li>
+                <li><strong>NFC</strong>: ${phone?.others?.NFC ?? "Not Available"}</li>
+                <li><strong>Radio</strong>: ${phone?.others?.Radio ?? "Not Available"}</li>
+                <li><strong>USB</strong>: ${phone?.others?.USB ?? "Not Available"}</li>
+                <li><strong>WLAN</strong>: ${phone?.others?.WLAN ?? "Not Available"}</li>
+            </ul>` : "Not Available"}
+        </li>
     </ul>
-    
-    `;
+
+`;
     displayDetails.appendChild(div);
 }
