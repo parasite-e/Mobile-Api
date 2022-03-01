@@ -39,14 +39,17 @@ const displayResult = phones => {
             const div = document.createElement('div');
             div.classList.add('col');
             div.innerHTML = `
-            <div class="card">        
-                    <img src="${phone.image}" class="card-img-top" alt="...">  
+            <div class="card display-card">
+                <div class="d-flex justify-content-center p-3">
+                <img src="${phone.image}" class="card-img-top" alt="..."> 
+                </div>        
+                     
                         <div class="d-flex flex-column align-items-center">
                           <div class="card-body text-center">
                            <h5 class="card-title">${phone.phone_name}</h5>
                            <h6>${phone.brand}</h6>
                           </div>
-                          <button onclick="loadPhoneDetails('${phone.slug}')" class="btn btn-primary w-50 mb-2">Details</button>
+                          <button onclick="loadPhoneDetails('${phone.slug}')" class="w-50 mb-2 details-btn">Details</button>
                         </div>
                     </div>
             `;
@@ -66,20 +69,21 @@ const loadPhoneDetails = phoneId => {
 
 const displayPhoneDetails = phone => {
     toggleDetailsDisplay('block');
-    console.log(phone);
     const displayDetails = document.getElementById('display-details');
     displayDetails.textContent = '';
     const div = document.createElement('div');
     div.classList.add('card');
     div.innerHTML = `
-    <img src="${phone.image}" class="card-img-top p-3" alt="...">
-    <div class="card-body">
+    <div class="d-flex justify-content-center p-3">
+      <img src="${phone.image}" class="card-img-top p-2" alt="...">
+    </div>
+    <div class="card-body details-list">
         <h4 class="card-title">${phone.brand}</h4>
         <h5 class="card-text">${phone.name}</h5>
         <p><small>${phone?.releaseDate ?? "comming soon"}</small></p >
     </div >
     <ul class="list-group list-group-flush">
-        <li class="list-group-item">
+        <li class="list-group-item details-list">
             <h6>Main Features</h6>
             <ul>
                 <li><strong>ChipSet: </strong>${phone.mainFeatures.chipSet}</li>
@@ -88,8 +92,8 @@ const displayPhoneDetails = phone => {
                 <li><strong>Storage: </strong>${phone.mainFeatures.storage}</li>
             </ul>
         </li>
-        <li class="list-group-item"><strong>Sensors:</strong> ${phone.mainFeatures.sensors}</li>
-        <li class="list-group-item">
+        <li class="list-group-item details-list"><strong>Sensors:</strong> ${phone.mainFeatures.sensors}</li>
+        <li class="list-group-item details-list">
             <h6>Others</h6>
             ${phone.others ? `<ul>
                 <li><strong>Bluetooth</strong>: ${phone?.others?.Bluetooth ?? "Not Available"}</li>
