@@ -4,16 +4,25 @@ const searchMobile = () => {
     const searchName = searchField.value;
 
     searchField.value = '';
+    const inputError = document.getElementById('input-error');
+    if (searchName == '') {
+        inputError.style.display = 'block';
 
+    } else {
+        inputError.style.display = 'none';
+    }
     const url = `https://openapi.programming-hero.com/api/phones?search=${searchName}`;
     fetch(url)
         .then(res => res.json())
         .then(data => displayResult(data.data));
+
+
 }
 
 // displaying the result
 const displayResult = phones => {
     const displayResult = document.getElementById('display-result');
+    displayResult.textContent = '';
     phones.forEach(phone => {
         // console.log(phone);
         const div = document.createElement('div');
