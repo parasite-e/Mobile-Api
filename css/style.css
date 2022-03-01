@@ -1,4 +1,6 @@
 #input-error{
     display:none;
-    height: 100px;
+}
+#api-error{
+    display: none;
 }
