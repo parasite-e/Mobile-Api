@@ -1,3 +1,8 @@
+const toggleDisplayResult = display => {
+    const displayDetails = document.getElementById('display-details');
+    displayDetails.style.display = display;
+}
+
 // getting the search value through api
 const searchMobile = () => {
     const searchField = document.getElementById('search-field');
@@ -16,7 +21,7 @@ const searchMobile = () => {
         .then(res => res.json())
         .then(data => displayResult(data.data));
 
-
+    toggleDisplayResult('none');
 }
 
 // displaying the result
@@ -53,8 +58,10 @@ const loadPhoneDetails = phoneId => {
 }
 
 const displayPhoneDetails = phone => {
+    toggleDisplayResult('block');
     console.log(phone);
     const displayDetails = document.getElementById('display-details');
+    displayDetails.textContent = '';
     const div = document.createElement('div');
     div.classList.add('card');
     div.innerHTML = `
